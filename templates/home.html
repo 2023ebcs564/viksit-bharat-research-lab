@@ -1,13 +1,101 @@
 {% extends "base.html" %}
 
-{% block title %}
-Home
-{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
 
-<h1>Welcome to Website One</h1>
+<!-- Hero Section -->
+<section class="text-center py-5">
 
-<p>Our Django website is working successfully.</p>
+    <div class="container">
+
+        <h1 class="display-2 fw-bold text-primary">
+            Viksit Bharat Research Lab
+        </h1>
+
+        <p class="lead mt-4">
+            Empowering Research, Artificial Intelligence,
+            Innovation and Technology for a Better Tomorrow.
+        </p>
+
+        <div class="mt-4">
+
+            <a href="#" class="btn btn-primary btn-lg me-3">
+                Explore Research
+            </a>
+
+            <a href="#" class="btn btn-outline-primary btn-lg">
+                Join Our Mission
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Features -->
+
+<section class="container py-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow border-0">
+
+                <div class="card-body">
+
+                    <h3>Artificial Intelligence</h3>
+
+                    <p>
+                        Building intelligent systems that solve real-world problems.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow border-0">
+
+                <div class="card-body">
+
+                    <h3>Research & Innovation</h3>
+
+                    <p>
+                        Transforming ideas into impactful scientific research.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow border-0">
+
+                <div class="card-body">
+
+                    <h3>Technology Development</h3>
+
+                    <p>
+                        Developing scalable software and digital platforms.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}
