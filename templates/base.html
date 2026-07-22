@@ -1,40 +1,109 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}Viksit Bharat Research Lab{% endblock %}</title>
+    <title>
+        <meta charset="UTF-8">
 
-    <link rel="stylesheet"
-          href="{% static 'css/style.css' %}">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+<meta
+    name="description"
+    content="Viksit Bharat Research Lab is dedicated to innovative research in Artificial Intelligence, Data Science, Robotics, Healthcare, Sustainability and Emerging Technologies.">
+
+<meta
+    name="keywords"
+    content="Research Lab, AI, Artificial Intelligence, Machine Learning, Data Science, Robotics, Healthcare, Innovation, Research, India">
+
+<meta
+    name="author"
+    content="Viksit Bharat Research Lab">
+
+<meta
+    name="robots"
+    content="index, follow">
+
+<link
+    rel="canonical"
+    href="{{ request.build_absolute_uri }}">
+        {% block title %}
+        Viksit Bharat Research Lab
+        {% endblock %}
+
+    </title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}">
 
 </head>
 
 <body>
 
+    {% include "includes/preloader.html" %}
+
     {% include "includes/navbar.html" %}
 
-    <main class="container mt-5">
+    {% if messages %}
 
-        {% block content %}
+    <div class="container mt-4">
 
-        {% endblock %}
+        {% for message in messages %}
 
-    </main>
+        <div class="alert alert-success alert-dismissible fade show">
+
+            {{ message }}
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+            </button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
 
     {% include "includes/footer.html" %}
 
+    {% include "includes/back_to_top.html" %}
+
+    {% include "includes/lightbox.html" %}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
 
 </body>
 

@@ -1,0 +1,103 @@
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="display-5 fw-bold">
+
+                Latest News
+
+            </h2>
+
+            <p class="text-muted">
+
+                Stay updated with our latest announcements, events and research highlights.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for news in latest_news %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="card news-card border-0 shadow-sm h-100">
+
+                    {% if news.image %}
+
+                    <img
+                        src="{{ news.image.url }}"
+                        class="card-img-top"
+                        alt="{{ news.title }}"
+                        style="height:230px;object-fit:cover;">
+
+                    {% else %}
+
+                    <img
+                        src="https://placehold.co/600x400?text=News"
+                        class="card-img-top"
+                        alt="{{ news.title }}"
+                        style="height:230px;object-fit:cover;">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <span class="badge bg-danger mb-3">
+
+                            {{ news.published_date }}
+
+                        </span>
+
+                        <h4 class="fw-bold">
+
+                            {{ news.title }}
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            {{ news.short_description|truncatewords:22 }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        <a
+                            href="{% url 'news_detail' news.slug %}"
+                            class="btn btn-outline-danger w-100">
+
+                            Read More
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning text-center">
+
+                    No News Available.
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

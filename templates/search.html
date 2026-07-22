@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search Results
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h1 class="display-5 fw-bold">
+
+                Search Results
+
+            </h1>
+
+            <p class="text-muted">
+
+                Results for:
+
+                <strong>"{{ query }}"</strong>
+
+            </p>
+
+        </div>
+
+        <!-- Projects -->
+
+        <div class="mb-5">
+
+            <h3 class="mb-4">
+
+                Projects
+
+            </h3>
+
+            <div class="row g-4">
+
+                {% for project in project_results %}
+
+                <div class="col-lg-4">
+
+                    <div class="card shadow-sm border-0 h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                {{ project.title }}
+
+                            </h5>
+
+                            <p>
+
+                                {{ project.short_description|truncatewords:18 }}
+
+                            </p>
+
+                            <a
+                                href="{% url 'project_detail' project.slug %}"
+                                class="btn btn-primary">
+
+                                View
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <p class="text-muted">
+
+                        No matching projects found.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Publications -->
+
+        <div class="mb-5">
+
+            <h3 class="mb-4">
+
+                Publications
+
+            </h3>
+
+            <div class="row g-4">
+
+                {% for publication in publication_results %}
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow-sm border-0 h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                {{ publication.title }}
+
+                            </h5>
+
+                            <p>
+
+                                {{ publication.authors }}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <p class="text-muted">
+
+                        No matching publications found.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Team -->
+
+        <div class="mb-5">
+
+            <h3 class="mb-4">
+
+                Team Members
+
+            </h3>
+
+            <div class="row g-4">
+
+                {% for member in team_results %}
+
+                <div class="col-lg-4">
+
+                    <div class="card shadow-sm border-0 h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                {{ member.name }}
+
+                            </h5>
+
+                            <p>
+
+                                {{ member.designation }}
+
+                            </p>
+
+                            <a
+                                href="{% url 'team_detail' member.slug %}"
+                                class="btn btn-outline-primary">
+
+                                View Profile
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <p class="text-muted">
+
+                        No matching team members found.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- News -->
+
+        <div>
+
+            <h3 class="mb-4">
+
+                News
+
+            </h3>
+
+            <div class="row g-4">
+
+                {% for news in news_results %}
+
+                <div class="col-lg-4">
+
+                    <div class="card shadow-sm border-0 h-100">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                {{ news.title }}
+
+                            </h5>
+
+                            <p>
+
+                                {{ news.short_description|truncatewords:20 }}
+
+                            </p>
+
+                            <a
+                                href="{% url 'news_detail' news.slug %}"
+                                class="btn btn-outline-danger">
+
+                                Read More
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+
+                    <p class="text-muted">
+
+                        No matching news found.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

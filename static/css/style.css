@@ -1,25 +1,892 @@
 body{
+    font-family: "Poppins", sans-serif;
     background:#f8f9fa;
-    font-family:Arial, Helvetica, sans-serif;
+    color:#222;
 }
 
-.navbar-brand{
-    font-size:1.5rem;
+.hero-section{
+    background:linear-gradient(135deg,#0d6efd,#0a3d91);
+    color:white;
 }
 
-.hero-title{
-    font-weight:700;
+.hero-section h1{
+    line-height:1.2;
 }
 
 .card{
-    border-radius:15px;
-    transition:0.3s;
+    transition:.3s;
+    border-radius:18px;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.btn{
+    border-radius:30px;
+}
+
+.section-title{
+    font-size:40px;
+    font-weight:700;
+}
+
+.team-photo{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.counter{
+    font-size:55px;
+    font-weight:700;
 }
 
 footer{
-    margin-top:80px;
+    background:#111;
+    color:white;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+}
+
+footer a:hover{
+    color:#0d6efd;
+}
+
+.navbar{
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+}
+
+.fade-up{
+    animation:fadeUp .9s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+footer a{
+
+    transition:.3s;
+
+}
+
+footer a:hover{
+
+    color:#0d6efd !important;
+
+}
+
+footer ul li{
+
+    margin-bottom:10px;
+
+}
+
+footer i{
+
+    margin-right:6px;
+
+}
+
+.navbar{
+
+    transition:0.3s;
+
+}
+
+.navbar-brand{
+
+    font-size:1.5rem;
+
+    letter-spacing:1px;
+
+}
+
+.nav-link{
+
+    margin-left:12px;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+.nav-link:hover{
+
+    color:#0d6efd !important;
+
+}
+
+.navbar .btn{
+
+    border-radius:8px;
+
+}
+
+/* ===========================
+   Hero Section
+=========================== */
+.hero-section{
+
+    background:
+
+        linear-gradient(
+
+            rgba(0,0,0,.65),
+
+            rgba(0,0,0,.65)
+
+        ),
+
+        url("../images/hero-bg.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+}
+
+
+
+
+.hero-section{
+
+    min-height:85vh;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hero-section h1{
+
+    line-height:1.2;
+
+}
+
+.hero-section .badge{
+
+    font-size:0.95rem;
+
+    padding:10px 18px;
+
+}
+
+.hero-section .btn{
+
+    padding:12px 28px;
+
+    border-radius:10px;
+
+}
+
+.hero-image{
+
+    border-radius:20px;
+
+    transition:0.4s ease;
+
+}
+
+.hero-image:hover{
+
+    transform:scale(1.03);
+
+}
+
+@media (max-width:991px){
+
+    .hero-section{
+
+        text-align:center;
+
+        min-height:auto;
+
+        padding:80px 0;
+
+    }
+
+}
+
+/* ===========================
+   Statistics Section
+=========================== */
+
+.stat-card{
+
+    padding:30px;
+
+    border-radius:15px;
+
+    transition:0.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.stat-card h2{
+
+    font-size:3rem;
+
+    margin-bottom:10px;
+
+}
+
+.stat-card h5{
+
+    font-weight:500;
+
+}
+
+/* ===========================
+   Research Cards
+=========================== */
+
+.research-card{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:0.35s ease;
+
+}
+
+.research-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.research-card img{
+
+    transition:.4s;
+
+}
+
+.research-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.research-card .btn{
+
+    border-radius:8px;
+
+}
+
+/* ===========================
+   Project Cards
+=========================== */
+
+.project-card{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:0.35s ease;
+
+}
+
+.project-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.project-card img{
+
+    transition:.4s;
+
+}
+
+.project-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.project-card .badge{
+
+    font-size:.85rem;
+
+    padding:8px 14px;
+
+}
+
+.project-card .btn{
+
+    border-radius:8px;
+
+}
+
+/* ===========================
+   Publications
+=========================== */
+
+.publication-card{
+
+    border-radius:18px;
+
+    transition:.35s ease;
+
+}
+
+.publication-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.publication-card .badge{
+
+    font-size:.9rem;
+
+    padding:8px 14px;
+
+}
+
+.publication-card .btn{
+
+    border-radius:8px;
+
+}
+
+/* ===========================
+   Home Team Section
+=========================== */
+
+.team-home-card{
+
+    border-radius:18px;
+
+    transition:.35s ease;
+
+    overflow:hidden;
+
+}
+
+.team-home-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.team-home-image{
+
+    width:170px;
+
+    height:170px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:5px solid #f8f9fa;
+
+    transition:.4s;
+
+}
+
+.team-home-card:hover .team-home-image{
+
+    transform:scale(1.05);
+
+}
+
+.team-home-card i{
+
+    color:#0d6efd;
+
+    transition:.3s;
+
+}
+
+.team-home-card i:hover{
+
+    color:#084298;
+
+}
+
+.team-home-card .btn{
+
+    border-radius:8px;
+
+}
+
+
+/* ===========================
+   Gallery
+=========================== */
+
+.gallery-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+}
+
+.gallery-card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    transition:.45s;
+
+}
+
+.gallery-card:hover img{
+
+    transform:scale(1.1);
+
+}
+
+.gallery-overlay{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    padding:18px;
+
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
+
+    color:#fff;
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.gallery-card:hover .gallery-overlay{
+
+    opacity:1;
+
+}
+
+.gallery-overlay h6{
+
+    margin-bottom:4px;
+
+}
+
+/* ===========================
+   Achievements
+=========================== */
+
+.achievement-card{
+
+    border-radius:18px;
+
+    transition:.35s ease;
+
+}
+
+.achievement-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.achievement-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#fff3cd;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.achievement-icon i{
+
+    font-size:2.5rem;
+
+    color:#f0ad00;
+
+}
+
+.achievement-card .badge{
+
+    padding:8px 16px;
+
+    font-size:.9rem;
+
+}
+
+/* ===========================
+   Partners
+=========================== */
+
+.partner-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    transition:.35s ease;
+
+    height:100%;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.partner-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.partner-logo{
+
+    width:100%;
+
+    height:90px;
+
+    object-fit:contain;
+
+    transition:.35s;
+
+}
+
+.partner-card:hover .partner-logo{
+
+    transform:scale(1.08);
+
+}
+
+.partner-card h6{
+
+    margin-top:15px;
+
+    font-weight:600;
+
+}
+/* ===========================
+   News Section
+=========================== */
+
+.news-card{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+
+}
+
+.news-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.news-card img{
+
+    transition:.4s;
+
+}
+
+.news-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.news-card .badge{
+
+    font-size:.85rem;
+
+    padding:8px 14px;
+
+}
+
+.news-card .btn{
+
+    border-radius:8px;
+
+}
+
+/* ===========================
+   Contact CTA
+=========================== */
+
+.contact-cta{
+
+    background:linear-gradient(
+        135deg,
+        #0d6efd,
+        #0b5ed7,
+        #084298
+    );
+
+    text-align:center;
+
+}
+
+.contact-cta h2{
+
+    line-height:1.2;
+
+}
+
+.contact-cta p{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+.contact-cta .btn{
+
+    padding:14px 32px;
+
+    border-radius:10px;
+
+    transition:.35s;
+
+}
+
+.contact-cta .btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ===========================
+   Project Detail Page
+=========================== */
+
+.project-info-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+}
+
+.project-description{
+
+    font-size:1.05rem;
+
+    line-height:1.8;
+
+}
+
+.project-info-card .btn{
+
+    border-radius:10px;
+
+}
+
+/* ===========================
+   Research Detail
+=========================== */
+
+.research-content{
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+    color:#555;
+
+}
+
+.research-content p{
+
+    margin-bottom:18px;
+
+}
+
+.research-content ul{
+
+    margin-bottom:20px;
+
+}
+
+.research-content li{
+
+    margin-bottom:8px;
+
+}
+
+/* ===========================
+   Team Detail Page
+=========================== */
+
+.profile-photo{
+
+    width:240px;
+
+    height:240px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:6px solid #f8f9fa;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.detail-content{
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+    color:#555;
+
+}
+
+.detail-content p{
+
+    margin-bottom:18px;
+
+}
+
+/* ===========================
+   News Detail
+=========================== */
+
+.detail-content{
+
+    font-size:1.08rem;
+
+    line-height:1.9;
+
+    color:#555;
+
+}
+
+.detail-content p{
+
+    margin-bottom:18px;
+
+}
+
+/* ===========================
+   Contact Page
+=========================== */
+
+.form-control{
+
+    border-radius:10px;
+
+    padding:12px;
+
+}
+
+.form-control:focus{
+
+    box-shadow:0 0 0 .2rem rgba(13,110,253,.2);
+
+}
+
+.card{
+
+    border-radius:18px;
+
+}
+
+/* ===========================
+   404 Page
+=========================== */
+
+.error-title{
+
+    font-size:9rem;
+
+    font-weight:700;
+
+    color:#0d6efd;
+
+}
+
+.error-page{
+
+    min-height:70vh;
+
+    display:flex;
+
+    align-items:center;
+
 }

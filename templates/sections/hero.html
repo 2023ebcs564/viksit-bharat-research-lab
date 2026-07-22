@@ -1,25 +1,62 @@
-<section class="py-5 text-center">
+<section class="hero-section bg-dark text-white py-5">
 
     <div class="container">
 
-        <h1 class="display-2 fw-bold text-primary">
-            Viksit Bharat Research Lab
-        </h1>
+        <div class="row align-items-center">
 
-        <p class="lead mt-4">
-            Empowering Research, Artificial Intelligence,
-            Innovation and Technology for a Better Tomorrow.
-        </p>
+            <div class="col-lg-6">
 
-        <div class="mt-4">
+                <span class="badge bg-primary mb-3">
 
-            <a href="{% url 'research' %}" class="btn btn-primary btn-lg me-3">
-                Explore Research
-            </a>
+                    Viksit Bharat Research Lab
 
-            <a href="{% url 'about' %}" class="btn btn-outline-primary btn-lg">
-                Learn More
-            </a>
+                </span>
+
+                <h1 class="display-3 fw-bold mb-4">
+
+                    Research for a Better Tomorrow
+
+                </h1>
+
+                <p class="lead mb-4">
+
+                    Advancing Artificial Intelligence, Healthcare,
+                    Robotics, Data Science, Computational Engineering,
+                    and Sustainable Technologies through innovative
+                    interdisciplinary research.
+
+                </p>
+
+                <div class="mt-4">
+
+                    <a
+                        href="{% url 'research' %}"
+                        class="btn btn-primary btn-lg me-3">
+
+                        Explore Research
+
+                    </a>
+
+                    <a
+                        href="{% url 'projects' %}"
+                        class="btn btn-outline-light btn-lg">
+
+                        View Projects
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+                <img
+                    src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1200"
+                    alt="Research Laboratory"
+                    class="img-fluid rounded shadow-lg hero-image">
+
+            </div>
 
         </div>
 

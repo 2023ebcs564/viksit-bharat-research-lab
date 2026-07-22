@@ -1,19 +1,123 @@
 {% extends "base.html" %}
 
 {% block title %}
-Team
+Research Team
 {% endblock %}
 
 {% block content %}
 
-<div class="py-5 text-center">
+<section class="py-5">
 
-    <h1>Our Team</h1>
+    <div class="container">
 
-    <p class="lead">
-        This page is under development.
-    </p>
+        <div class="text-center mb-5">
 
-</div>
+            <h1 class="fw-bold">
+                Our Research Team
+            </h1>
+
+            <p class="text-muted">
+                Meet our researchers and faculty members.
+            </p>
+
+        </div>
+
+        <div class="row">
+
+            {% for member in team_members %}
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="card team-card shadow-sm border-0 h-100">
+
+                    {% if member.photo %}
+
+                    <img
+                        src="{{ member.photo.url }}"
+                        class="team-photo mx-auto mt-4"
+                        alt="{{ member.name }}"
+                    >
+
+                    {% else %}
+
+                    <img
+                        src="https://placehold.co/250x250?text=Photo"
+                        class="team-photo mx-auto mt-4"
+                        alt="Photo"
+                    >
+
+                    {% endif %}
+
+                    <div class="card-body text-center">
+
+                        <h4>
+
+                            {{ member.name }}
+
+                        </h4>
+
+                        <h6 class="text-primary">
+
+                            {{ member.designation }}
+
+                        </h6>
+
+                        <p>
+
+                            {{ member.bio|truncatewords:20 }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        {% if member.slug %}
+
+                        <a
+                            href="{% url 'team_detail' member.slug %}"
+                            class="btn btn-primary w-100">
+
+                            View Profile
+
+                        </a>
+
+                        {% else %}
+
+                        <button
+                            class="btn btn-secondary w-100"
+                            disabled>
+
+                            Slug Missing
+
+                        </button>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center">
+
+                <h3>
+
+                    No Team Members Found
+
+                </h3>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}

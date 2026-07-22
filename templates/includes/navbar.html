@@ -1,76 +1,143 @@
-{% load static %}
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="{% url 'home' %}">
-            VBRL
-        </a>
+      <a class="navbar-brand d-flex align-items-center"
+   href="{% url 'home' %}">
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+    <img
+        src="{% static 'images/logo.png' %}"
+        alt="Logo"
+        width="50"
+        height="50"
+        class="me-2 rounded-circle">
+
+    <span class="fw-bold">
+
+        Viksit Bharat Research Lab
+
+    </span>
+
+</a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
 
             <span class="navbar-toggler-icon"></span>
 
         </button>
 
-        <div class="collapse navbar-collapse"
-             id="navbarNav">
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
 
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
+
                     <a class="nav-link" href="{% url 'home' %}">
+
                         Home
+
                     </a>
+
                 </li>
 
                 <li class="nav-item">
+
                     <a class="nav-link" href="{% url 'about' %}">
+
                         About
+
                     </a>
+
                 </li>
 
                 <li class="nav-item">
+
                     <a class="nav-link" href="{% url 'research' %}">
+
                         Research
+
                     </a>
+
                 </li>
 
                 <li class="nav-item">
+
                     <a class="nav-link" href="{% url 'projects' %}">
+
                         Projects
+
                     </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'team' %}">
-                        Team
-                    </a>
-                </li>
 
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'publications' %}">
+
                         Publications
+
                     </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">
-                        Contact
+
+                    <a class="nav-link" href="{% url 'team' %}">
+
+                        Team
+
                     </a>
+
                 </li>
 
-                <li class="nav-item ms-3">
-                    <a class="btn btn-primary" href="#">
-                        Login
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{% url 'gallery' %}">
+
+                        Gallery
+
                     </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{% url 'contact' %}">
+
+                        Contact
+
+                    </a>
+
                 </li>
 
             </ul>
+
+            <form
+                class="d-flex ms-lg-3 mt-3 mt-lg-0"
+                action="{% url 'search' %}"
+                method="get">
+
+                <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search..."
+                    name="q">
+
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+
+                    <i class="bi bi-search"></i>
+
+                </button>
+
+            </form>
 
         </div>
 

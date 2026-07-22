@@ -1,19 +1,195 @@
 {% extends "base.html" %}
 
 {% block title %}
-Contact
+Contact Us
 {% endblock %}
 
 {% block content %}
 
-<div class="py-5 text-center">
+<section class="py-5">
 
-    <h1>Contact Us</h1>
+    <div class="container">
 
-    <p class="lead">
-        This page is under development.
-    </p>
+        <div class="text-center mb-5">
 
-</div>
+            <h1 class="display-4 fw-bold">
+
+                Contact Us
+
+            </h1>
+
+            <p class="text-muted">
+
+                We'd love to hear from you. Get in touch with our research team.
+
+            </p>
+
+        </div>
+
+        <div class="row g-5">
+
+            <div class="col-lg-7">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="mb-4">
+
+                            Send us a Message
+
+                        </h3>
+
+                        <form method="post">
+
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+                                    Full Name
+
+                                </label>
+
+                                {{ form.name }}
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+                                    Email Address
+
+                                </label>
+
+                                {{ form.email }}
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+                                    Subject
+
+                                </label>
+
+                                {{ form.subject }}
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+                                    Message
+
+                                </label>
+
+                                {{ form.message }}
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-lg">
+
+                                Send Message
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-5">
+
+                <div class="card shadow border-0 mb-4">
+
+                    <div class="card-body">
+
+                        <h4>
+
+                            Contact Information
+
+                        </h4>
+
+                        <hr>
+
+                        <p>
+
+                            <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+
+                            Viksit Bharat Research Lab
+
+                        </p>
+
+                        <p>
+
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+
+                            2023ebcs564@online.bits-pilani.ac.in
+
+                        </p>
+
+                        <p>
+
+                            <i class="bi bi-telephone-fill text-primary me-2"></i>
+
+                            +91-9119174467
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body">
+
+                        <h4>
+
+                            Office Hours
+
+                        </h4>
+
+                        <hr>
+
+                        <p>
+
+                            Monday – Friday
+
+                        </p>
+
+                        <p>
+
+                            9:00 AM – 5:00 PM
+
+                        </p>
+
+                        <p class="text-muted">
+
+                            Saturday & Sunday Closed
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}

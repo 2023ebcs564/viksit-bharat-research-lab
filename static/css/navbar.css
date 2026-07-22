@@ -1,0 +1,186 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand d-flex align-items-center"
+            href="{% url 'home' %}">
+
+            <img
+                src="{% static 'images/logo/logo.png' %}"
+                alt="Logo"
+                height="55"
+                class="me-3">
+
+            <div>
+
+                <h5 class="mb-0 fw-bold">
+
+                    Viksit Bharat
+
+                </h5>
+
+                <small class="text-muted">
+
+                    Research Lab
+
+                </small>
+
+            </div>
+
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarContent">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'home' %}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'about' %}">
+
+                        About
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'research' %}">
+
+                        Research
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'projects' %}">
+
+                        Projects
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'publications' %}">
+
+                        Publications
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'team' %}">
+
+                        Team
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'gallery' %}">
+
+                        Gallery
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'contact' %}">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+            <form
+                class="d-flex ms-lg-4 mt-3 mt-lg-0"
+                method="GET"
+                action="{% url 'search' %}">
+
+                <input
+                    class="form-control me-2"
+                    type="search"
+                    name="q"
+                    placeholder="Search..."
+                    required>
+
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+
+                    Search
+
+                </button>
+
+            </form>
+
+            <a
+                href="/admin/"
+                class="btn btn-outline-dark ms-lg-3 mt-3 mt-lg-0">
+
+                Admin
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+Gallery
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5 bg-primary text-white">
+
+    <div class="container text-center">
+
+        <h1 class="display-4 fw-bold">
+
+            Gallery
+
+        </h1>
+
+        <p class="lead">
+
+            Research activities, laboratories, conferences and events.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            {% for item in gallery %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    {% if item.image %}
+
+                    <img
+                        src="{{ item.image.url }}"
+                        alt="{{ item.title }}"
+                        class="card-img-top gallery-image"
+                        style="height:230px;object-fit:cover;cursor:pointer;">
+
+                    {% else %}
+
+                    <img
+                        src="https://placehold.co/600x400?text=Gallery"
+                        class="card-img-top"
+                        style="height:230px;object-fit:cover;">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h5>
+
+                            {{ item.title }}
+
+                        </h5>
+
+                        <span class="badge bg-primary">
+
+                            {{ item.category }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning text-center">
+
+                    No Images Available.
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

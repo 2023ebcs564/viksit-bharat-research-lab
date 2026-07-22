@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ news.title }}
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10">
+
+                <div class="card border-0 shadow">
+
+                    {% if news.image %}
+
+                    <img
+                        src="{{ news.image.url }}"
+                        class="card-img-top"
+                        style="height:450px;object-fit:cover;"
+                        alt="{{ news.title }}">
+
+                    {% else %}
+
+                    <img
+                        src="https://placehold.co/1200x500?text=News"
+                        class="card-img-top"
+                        style="height:450px;object-fit:cover;"
+                        alt="News">
+
+                    {% endif %}
+
+                    <div class="card-body p-5">
+
+                        <span class="badge bg-danger mb-3">
+
+                            {{ news.published_date }}
+
+                        </span>
+
+                        <h1 class="fw-bold mb-4">
+
+                            {{ news.title }}
+
+                        </h1>
+
+                        <p class="lead text-muted">
+
+                            {{ news.short_description }}
+
+                        </p>
+
+                        <hr>
+
+                        <div class="detail-content">
+
+                            {{ news.content|linebreaks }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% if related_news %}
+
+        <div class="mt-5">
+
+            <h2 class="fw-bold mb-4">
+
+                Related News
+
+            </h2>
+
+            <div class="row">
+
+                {% for item in related_news %}
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card news-card h-100 shadow-sm border-0">
+
+                        {% if item.image %}
+
+                        <img
+                            src="{{ item.image.url }}"
+                            class="card-img-top"
+                            style="height:220px;object-fit:cover;"
+                            alt="{{ item.title }}">
+
+                        {% endif %}
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                {{ item.title }}
+
+                            </h5>
+
+                            <p class="text-muted">
+
+                                {{ item.short_description|truncatewords:18 }}
+
+                            </p>
+
+                            <a
+                                href="{% url 'news_detail' item.slug %}"
+                                class="btn btn-outline-danger">
+
+                                Read More
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

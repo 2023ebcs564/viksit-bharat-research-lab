@@ -1,0 +1,155 @@
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="display-5 fw-bold">
+
+                Meet Our Team
+
+            </h2>
+
+            <p class="text-muted">
+
+                Our dedicated researchers, faculty members, and innovators.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for member in team_members %}
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card team-home-card border-0 shadow-sm h-100 text-center">
+
+                    {% if member.photo %}
+
+                    <img
+                        src="{{ member.photo.url }}"
+                        class="team-home-image mx-auto mt-4"
+                        alt="{{ member.name }}">
+
+                    {% else %}
+
+                    <img
+                        src="https://placehold.co/250x250?text=Photo"
+                        class="team-home-image mx-auto mt-4"
+                        alt="Photo">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold">
+
+                            {{ member.name }}
+
+                        </h4>
+
+                        <p class="text-primary fw-semibold">
+
+                            {{ member.designation }}
+
+                        </p>
+
+                        <p class="text-muted">
+
+                            {{ member.bio|truncatewords:18 }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="pb-3">
+
+                        {% if member.email %}
+
+                        <a
+                            href="mailto:{{ member.email }}"
+                            class="text-decoration-none me-2">
+
+                            <i class="bi bi-envelope-fill fs-5"></i>
+
+                        </a>
+
+                        {% endif %}
+
+                        {% if member.linkedin %}
+
+                        <a
+                            href="{{ member.linkedin }}"
+                            target="_blank"
+                            class="text-decoration-none me-2">
+
+                            <i class="bi bi-linkedin fs-5"></i>
+
+                        </a>
+
+                        {% endif %}
+
+                        {% if member.google_scholar %}
+
+                        <a
+                            href="{{ member.google_scholar }}"
+                            target="_blank"
+                            class="text-decoration-none me-2">
+
+                            <i class="bi bi-mortarboard-fill fs-5"></i>
+
+                        </a>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        <a
+                            href="{% url 'team_detail' member.slug %}"
+                            class="btn btn-outline-primary w-100">
+
+                            View Profile
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning text-center">
+
+                    No Team Members Available.
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a
+                href="{% url 'team' %}"
+                class="btn btn-primary btn-lg">
+
+                View Complete Team
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

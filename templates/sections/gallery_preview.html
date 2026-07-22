@@ -1,0 +1,88 @@
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+
+                Research Gallery
+
+            </h2>
+
+            <p class="text-muted">
+
+                Highlights from our research, laboratory activities, workshops and events.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for image in featured_gallery %}
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm gallery-card h-100">
+
+                    {% if image.image %}
+
+                    <img
+                        src="{{ image.image.url }}"
+                        class="card-img-top gallery-image"
+                        alt="{{ image.title }}">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <span class="badge bg-primary mb-2">
+
+                            {{ image.category }}
+
+                        </span>
+
+                        <h6 class="fw-bold">
+
+                            {{ image.title }}
+
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-info text-center">
+
+                    No Gallery Images Available.
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a
+                href="{% url 'gallery' %}"
+                class="btn btn-primary btn-lg">
+
+                View Complete Gallery
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

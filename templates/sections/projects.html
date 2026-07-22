@@ -1,0 +1,115 @@
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="display-5 fw-bold">
+
+                Featured Projects
+
+            </h2>
+
+            <p class="text-muted">
+
+                Explore our latest research projects and innovations.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for project in projects %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="card project-card border-0 shadow-sm h-100">
+
+                    {% if project.image %}
+
+                    <img
+                        src="{{ project.image.url }}"
+                        class="card-img-top"
+                        alt="{{ project.title }}"
+                        style="height:240px;object-fit:cover;">
+
+                    {% else %}
+
+                    <img
+                        src="https://placehold.co/600x400?text=Project"
+                        class="card-img-top"
+                        alt="Project"
+                        style="height:240px;object-fit:cover;">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <span class="badge bg-primary mb-3">
+
+                            {{ project.category.title }}
+
+                        </span>
+
+                        <h4 class="fw-bold">
+
+                            {{ project.title }}
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            {{ project.short_description|truncatewords:20 }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        <a
+                            href="{% url 'project_detail' project.slug %}"
+                            class="btn btn-primary w-100">
+
+                            View Project
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning text-center">
+
+                    No Featured Projects Available.
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a
+                href="{% url 'projects' %}"
+                class="btn btn-outline-primary btn-lg">
+
+                View All Projects
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

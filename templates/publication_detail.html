@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ publication.title }}
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="container">
+
+        <nav class="mb-4">
+
+            <a href="/">Home</a>
+
+            /
+
+            <a href="{% url 'publications' %}">
+
+                Publications
+
+            </a>
+
+            /
+
+            <strong>
+
+                Publication Details
+
+            </strong>
+
+        </nav>
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-5">
+
+                <h2 class="fw-bold">
+
+                    {{ publication.title }}
+
+                </h2>
+
+                <hr>
+
+                <h5>
+
+                    Authors
+
+                </h5>
+
+                <p>
+
+                    {{ publication.authors }}
+
+                </p>
+
+                <h5>
+
+                    Journal
+
+                </h5>
+
+                <p>
+
+                    {{ publication.journal }}
+
+                </p>
+
+                <h5>
+
+                    Year
+
+                </h5>
+
+                <p>
+
+                    {{ publication.year }}
+
+                </p>
+
+                {% if publication.link %}
+
+                <a
+                    href="{{ publication.link }}"
+                    target="_blank"
+                    class="btn btn-primary">
+
+                    Read Publication
+
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

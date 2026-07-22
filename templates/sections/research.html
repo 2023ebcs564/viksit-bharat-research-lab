@@ -1,0 +1,97 @@
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold display-5">
+
+                Research Areas
+
+            </h2>
+
+            <p class="text-muted">
+
+                Explore our multidisciplinary research domains driving innovation and real-world impact.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for area in research_areas %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="card research-card border-0 shadow-sm h-100">
+
+                    {% if area.image %}
+
+                    <img
+                        src="{{ area.image.url }}"
+                        class="card-img-top"
+                        alt="{{ area.title }}"
+                        style="height:240px;object-fit:cover;">
+
+                    {% else %}
+
+                    <div class="text-center py-5">
+
+                        <i class="{{ area.icon }} display-1 text-primary"></i>
+
+                    </div>
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold">
+
+                            {{ area.title }}
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            {{ area.short_description }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        <a
+                            href="{% url 'research_detail' area.slug %}"
+                            class="btn btn-outline-primary w-100">
+
+                            Learn More
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning text-center">
+
+                    No Research Areas Available.
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
