@@ -29,6 +29,7 @@ ALLOWED_HOSTS = os.environ.get(
     "ALLOWED_HOSTS",
     "127.0.0.1,localhost,viksit-bharat-research-lab-production.up.railway.app",
 ).split(",")
+
 # --------------------------------------------------
 # Installed Apps
 # --------------------------------------------------
@@ -98,14 +99,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 # --------------------------------------------------
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',   # fallback for local dev
         conn_max_age=600,
     )
 }
-
-print("DATABASE =", DATABASES["default"])
-print("DB NAME =", DATABASES["default"]["NAME"])
 
 # --------------------------------------------------
 # Password Validation
