@@ -104,6 +104,9 @@ DATABASES = {
     )
 }
 
+print("DATABASE =", DATABASES["default"])
+print("DB NAME =", DATABASES["default"]["NAME"])
+
 # --------------------------------------------------
 # Password Validation
 # --------------------------------------------------
