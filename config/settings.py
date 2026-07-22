@@ -40,11 +40,14 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+
+    "cloudinary_storage",
+    "cloudinary",
+
     "django.contrib.staticfiles",
 
     "core",
 ]
-
 # --------------------------------------------------
 # Middleware
 # --------------------------------------------------
@@ -97,6 +100,16 @@ WSGI_APPLICATION = "config.wsgi.application"
 # --------------------------------------------------
 # Database
 # --------------------------------------------------
+import cloudinary
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
+
+
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -156,8 +169,7 @@ STATICFILES_STORAGE = (
 # Media Files
 # --------------------------------------------------
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 # --------------------------------------------------
 # Default Primary Key
