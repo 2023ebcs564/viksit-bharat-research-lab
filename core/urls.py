@@ -4,11 +4,7 @@ from . import views
 
 urlpatterns = [
 
-    path(
-        "debug-storage-check/",
-        views.debug_storage,
-        name="debug_storage",
-    ),
+ 
 
     path(
         "",
