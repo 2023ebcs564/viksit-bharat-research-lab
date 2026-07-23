@@ -117,30 +117,37 @@
 
                 </h5>
 
-                <a href="#" class="text-light fs-3 me-3">
+              {% if site_settings.linkedin %}
+                <a href="{{ site_settings.linkedin }}" target="_blank" class="text-light fs-3 me-3">
 
                     <i class="bi bi-linkedin"></i>
 
                 </a>
+                {% endif %}
 
-                <a href="#" class="text-light fs-3 me-3">
+                {% if site_settings.twitter %}
+                <a href="{{ site_settings.twitter }}" target="_blank" class="text-light fs-3 me-3">
 
                     <i class="bi bi-twitter-x"></i>
 
                 </a>
+                {% endif %}
 
-                <a href="#" class="text-light fs-3 me-3">
+                {% if site_settings.github %}
+                <a href="{{ site_settings.github }}" target="_blank" class="text-light fs-3 me-3">
 
                     <i class="bi bi-github"></i>
 
                 </a>
+                {% endif %}
 
-                <a href="#" class="text-light fs-3">
+                {% if site_settings.youtube %}
+                <a href="{{ site_settings.youtube }}" target="_blank" class="text-light fs-3">
 
                     <i class="bi bi-youtube"></i>
 
                 </a>
-
+                {% endif %}
             </div>
 
         </div>
