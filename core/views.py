@@ -1,7 +1,8 @@
-
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
+from django.http import HttpResponse
+from django.core.files.storage import default_storage
 
 from .forms import ContactForm
 from .models import (
