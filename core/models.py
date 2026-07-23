@@ -274,13 +274,14 @@ class News(models.Model):
         max_length=250,
     )
 
-    content = ProseEditorField(
+  content = ProseEditorField(
         extensions={
             "Bold": True,
             "Italic": True,
             "Heading": {"levels": [2, 3]},
             "BulletList": True,
             "OrderedList": True,
+            "ListItem": True,
             "Link": True,
         },
         sanitize=True,
