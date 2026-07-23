@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -43,6 +44,9 @@ class ResearchArea(models.Model):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("research_detail", args=[self.slug])
 
     def __str__(self):
 
@@ -94,6 +98,10 @@ class Project(models.Model):
         blank=True,
     )
 
+    display_order = models.PositiveIntegerField(
+        default=0,
+    )
+
     featured = models.BooleanField(
         default=False,
     )
@@ -109,13 +117,16 @@ class Project(models.Model):
 
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("project_detail", args=[self.slug])
+
     def __str__(self):
 
         return self.title
 
     class Meta:
 
-        ordering = ["-created_at"]
+        ordering = ["display_order", "-created_at"]
 
         verbose_name = "Project"
 
@@ -150,6 +161,9 @@ class Publication(models.Model):
         auto_now_add=True,
     )
 
+    def get_absolute_url(self):
+        return reverse("publication_detail", args=[self.pk])
+
     def __str__(self):
 
         return self.title
@@ -178,7 +192,6 @@ class TeamMember(models.Model):
         max_length=150,
     )
 
-    # Controls the display order on the website
     display_order = models.PositiveIntegerField(
         default=0,
     )
@@ -230,6 +243,9 @@ class TeamMember(models.Model):
 
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("team_detail", args=[self.slug])
+
     def __str__(self):
 
         return self.name
@@ -241,6 +257,7 @@ class TeamMember(models.Model):
         verbose_name = "Team Member"
 
         verbose_name_plural = "Team Members"
+
 
 class News(models.Model):
 
@@ -281,6 +298,9 @@ class News(models.Model):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("news_detail", args=[self.slug])
 
     def __str__(self):
 
@@ -357,6 +377,10 @@ class Gallery(models.Model):
         blank=True,
     )
 
+    display_order = models.PositiveIntegerField(
+        default=0,
+    )
+
     featured = models.BooleanField(
         default=False,
     )
@@ -371,7 +395,7 @@ class Gallery(models.Model):
 
     class Meta:
 
-        ordering = ["-created_at"]
+        ordering = ["display_order", "-created_at"]
 
         verbose_name = "Gallery Image"
 
@@ -392,6 +416,10 @@ class Partner(models.Model):
         blank=True,
     )
 
+    display_order = models.PositiveIntegerField(
+        default=0,
+    )
+
     featured = models.BooleanField(
         default=True,
     )
@@ -406,7 +434,7 @@ class Partner(models.Model):
 
     class Meta:
 
-        ordering = ["name"]
+        ordering = ["display_order", "name"]
 
         verbose_name = "Partner"
 
@@ -445,6 +473,10 @@ class Achievement(models.Model):
 
     year = models.PositiveIntegerField()
 
+    display_order = models.PositiveIntegerField(
+        default=0,
+    )
+
     featured = models.BooleanField(
         default=True,
     )
@@ -455,7 +487,7 @@ class Achievement(models.Model):
 
     class Meta:
 
-        ordering = ["-year"]
+        ordering = ["display_order", "-year"]
 
         verbose_name = "Achievement"
 
