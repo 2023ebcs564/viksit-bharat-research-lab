@@ -24,7 +24,7 @@ from .models import (
 def send_brevo_email(to_email, to_name, subject, text_content):
 
     try:
-        requests.post(
+        response = requests.post(
             "https://api.brevo.com/v3/smtp/email",
             headers={
                 "accept": "application/json",
@@ -44,9 +44,10 @@ def send_brevo_email(to_email, to_name, subject, text_content):
             },
             timeout=10,
         )
-    except requests.RequestException:
-        pass
-
+        print(f"BREVO STATUS: {response.status_code}")
+        print(f"BREVO RESPONSE: {response.text}")
+    except requests.RequestException as e:
+        print(f"BREVO EXCEPTION: {e}")
 
 def debug_storage(request):
 
