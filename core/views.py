@@ -1,12 +1,11 @@
+import requests
+
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from django.core.files.storage import default_storage
-
-from django.core.mail import send_mail
 from django.conf import settings
-
 
 from .forms import ContactForm
 from .models import (
@@ -20,6 +19,34 @@ from .models import (
     ResearchArea,
     TeamMember,
 )
+
+
+def send_brevo_email(to_email, to_name, subject, text_content):
+
+    try:
+        requests.post(
+            "https://api.brevo.com/v3/smtp/email",
+            headers={
+                "accept": "application/json",
+                "api-key": settings.BREVO_API_KEY,
+                "content-type": "application/json",
+            },
+            json={
+                "sender": {
+                    "name": settings.BREVO_SENDER_NAME,
+                    "email": settings.BREVO_SENDER_EMAIL,
+                },
+                "to": [
+                    {"email": to_email, "name": to_name},
+                ],
+                "subject": subject,
+                "textContent": text_content,
+            },
+            timeout=10,
+        )
+    except requests.RequestException:
+        pass
+
 
 def debug_storage(request):
 
@@ -331,21 +358,22 @@ def contact(request):
 
             contact_message = form.save()
 
-            send_mail(
+            send_brevo_email(
+                to_email=settings.ADMIN_EMAIL,
+                to_name="Admin",
                 subject=f"New Contact Message: {contact_message.subject}",
-                message=(
+                text_content=(
                     f"Name: {contact_message.name}\n"
                     f"Email: {contact_message.email}\n\n"
                     f"Message:\n{contact_message.message}"
                 ),
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.ADMIN_EMAIL],
-                fail_silently=True,
             )
 
-            send_mail(
+            send_brevo_email(
+                to_email=contact_message.email,
+                to_name=contact_message.name,
                 subject="We've received your message - Viksit Bharat Research Lab",
-                message=(
+                text_content=(
                     f"Hi {contact_message.name},\n\n"
                     "Thank you for reaching out to Viksit Bharat Research Lab. "
                     "We've received your message and will get back to you soon.\n\n"
@@ -354,9 +382,6 @@ def contact(request):
                     "Regards,\n"
                     "Viksit Bharat Research Lab"
                 ),
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[contact_message.email],
-                fail_silently=True,
             )
 
             messages.success(
