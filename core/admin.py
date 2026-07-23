@@ -10,6 +10,7 @@ from .models import (
     Gallery,
     Partner,
     Achievement,
+    SiteSettings,
 )
 
 
@@ -243,3 +244,13 @@ class AchievementAdmin(admin.ModelAdmin):
 admin.site.site_title = "Research Lab Admin"
 
 admin.site.index_title = "Administration Dashboard"
+
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "site_name",
+        "email",
+        "phone",
+    )
