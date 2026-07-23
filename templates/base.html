@@ -32,6 +32,25 @@
         rel="canonical"
         href="{{ request.build_absolute_uri }}">
 
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="{% static 'images/favicon.ico' %}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Viksit Bharat Research Lab">
+    <meta property="og:title" content="Viksit Bharat Research Lab">
+    <meta property="og:description" content="Viksit Bharat Research Lab is dedicated to innovative research in Artificial Intelligence, Data Science, Robotics, Healthcare, Sustainability and Emerging Technologies.">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/logo.png' %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Viksit Bharat Research Lab">
+    <meta name="twitter:description" content="Viksit Bharat Research Lab is dedicated to innovative research in Artificial Intelligence, Data Science, Robotics, Healthcare, Sustainability and Emerging Technologies.">
+    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/logo.png' %}">
+
+    <title>
+
     <title>
         {% block title %}
         Viksit Bharat Research Lab
