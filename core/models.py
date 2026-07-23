@@ -19,7 +19,18 @@ class ResearchArea(models.Model):
         max_length=250,
     )
 
-    description = models.TextField()
+    description = ProseEditorField(
+        extensions={
+            "Bold": True,
+            "Italic": True,
+            "Heading": {"levels": [2, 3]},
+            "BulletList": True,
+            "OrderedList": True,
+            "ListItem": True,
+            "Link": True,
+        },
+        sanitize=True,
+    )
 
     image = models.ImageField(
         upload_to="research/",
@@ -207,12 +218,30 @@ class TeamMember(models.Model):
         blank=True,
     )
 
-    bio = models.TextField()
-
-    research_interest = models.TextField(
-        blank=True,
+ bio = ProseEditorField(
+        extensions={
+            "Bold": True,
+            "Italic": True,
+            "BulletList": True,
+            "OrderedList": True,
+            "ListItem": True,
+            "Link": True,
+        },
+        sanitize=True,
     )
 
+    research_interest = ProseEditorField(
+        extensions={
+            "Bold": True,
+            "Italic": True,
+            "BulletList": True,
+            "OrderedList": True,
+            "ListItem": True,
+            "Link": True,
+        },
+        sanitize=True,
+        blank=True,
+    )
     linkedin = models.URLField(
         blank=True,
     )

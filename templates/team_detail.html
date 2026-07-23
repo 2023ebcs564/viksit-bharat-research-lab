@@ -134,7 +134,7 @@
 
                         <div class="detail-content">
 
-                            {{ member.bio|linebreaks }}
+                            {{ member.bio|safe }}
 
                         </div>
 
@@ -156,7 +156,7 @@
 
                         <div class="detail-content">
 
-                            {{ member.research_interest|linebreaks }}
+                            {{ member.research_interest|safe }}
 
                         </div>
 
