@@ -8,18 +8,30 @@ from pathlib import Path
 import os
 import dj_database_url
 import cloudinary
+
 # --------------------------------------------------
 # Base Directory
 # --------------------------------------------------
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+# --------------------------------------------------
+# Cloudinary Credentials
+# --------------------------------------------------
+# CLOUDINARY_STORAGE hi wo setting hai jo django-cloudinary-storage
+# package actually padhta hai. In 3 env vars ko Railway par
+# EXACTLY inhi naamon se set hona chahiye.
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+}
 
 cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    cloud_name=CLOUDINARY_STORAGE["CLOUD_NAME"],
+    api_key=CLOUDINARY_STORAGE["API_KEY"],
+    api_secret=CLOUDINARY_STORAGE["API_SECRET"],
     secure=True,
 )
 
@@ -32,7 +44,7 @@ SECRET_KEY = os.environ.get(
     "django-insecure-local-development-key"
 )
 
-DEBUG = os.environ.get("DEBUG", "True") == "True"
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.environ.get(
     "ALLOWED_HOSTS",
@@ -57,6 +69,7 @@ INSTALLED_APPS = [
 
     "core",
 ]
+
 # --------------------------------------------------
 # Middleware
 # --------------------------------------------------
@@ -109,16 +122,6 @@ WSGI_APPLICATION = "config.wsgi.application"
 # --------------------------------------------------
 # Database
 # --------------------------------------------------
-import cloudinary
-
-cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
-    secure=True,
-)
-
-
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -169,9 +172,12 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
 # --------------------------------------------------
 # Media Files
 # --------------------------------------------------
+
+MEDIA_URL = "/media/"
 
 STORAGES = {
     "default": {
@@ -182,12 +188,12 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
 # --------------------------------------------------
 # Default Primary Key
 # --------------------------------------------------
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 
 # --------------------------------------------------
 # Production Security
@@ -198,6 +204,3 @@ if not DEBUG:
 
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-
-
-    # Railway Cloudinary test
