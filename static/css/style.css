@@ -907,3 +907,26 @@ html{
     justify-content:center;
     z-index:999;
 }
+
+html{
+    background-color:#111;
+    overflow-x:hidden;
+}
+
+.navbar form.d-flex{
+    flex-wrap:nowrap;
+}
+
+.navbar form.d-flex .form-control{
+    width:160px;
+    max-width:160px;
+}
+
+@media (max-width:991px){
+
+    .navbar form.d-flex .form-control{
+        width:100%;
+        max-width:100%;
+    }
+
+}
