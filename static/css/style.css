@@ -890,3 +890,20 @@ footer i{
     align-items:center;
 
 }
+
+html{
+    background-color:#111;
+}
+
+#backToTop{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:55px;
+    height:55px;
+    font-size:1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
