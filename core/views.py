@@ -4,6 +4,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse    
 from django.core.files.storage import default_storage
 
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 from .forms import ContactForm
 from .models import (
     Achievement,
@@ -16,7 +20,6 @@ from .models import (
     ResearchArea,
     TeamMember,
 )
-
 
 def debug_storage(request):
 
@@ -318,7 +321,7 @@ def search(request):
     )
 
 
-def contact(request):
+ def contact(request):
 
     if request.method == "POST":
 
@@ -326,7 +329,35 @@ def contact(request):
 
         if form.is_valid():
 
-            form.save()
+            contact_message = form.save()
+
+            send_mail(
+                subject=f"New Contact Message: {contact_message.subject}",
+                message=(
+                    f"Name: {contact_message.name}\n"
+                    f"Email: {contact_message.email}\n\n"
+                    f"Message:\n{contact_message.message}"
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.ADMIN_EMAIL],
+                fail_silently=True,
+            )
+
+            send_mail(
+                subject="We've received your message - Viksit Bharat Research Lab",
+                message=(
+                    f"Hi {contact_message.name},\n\n"
+                    "Thank you for reaching out to Viksit Bharat Research Lab. "
+                    "We've received your message and will get back to you soon.\n\n"
+                    "Your message:\n"
+                    f"{contact_message.message}\n\n"
+                    "Regards,\n"
+                    "Viksit Bharat Research Lab"
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[contact_message.email],
+                fail_silently=True,
+            )
 
             messages.success(
                 request,
@@ -352,6 +383,7 @@ def contact(request):
         "contact.html",
         context,
     )
+
 
 def robots_txt(request):
 
