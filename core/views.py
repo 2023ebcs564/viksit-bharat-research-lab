@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse    
+from django.http import HttpResponse
 from django.core.files.storage import default_storage
 
 from django.core.mail import send_mail
@@ -321,7 +321,7 @@ def search(request):
     )
 
 
- def contact(request):
+def contact(request):
 
     if request.method == "POST":
 
