@@ -64,7 +64,7 @@ INSTALLED_APPS = [
 
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
-
+    "django_prose_editor",
     "cloudinary_storage",
     "cloudinary",
 

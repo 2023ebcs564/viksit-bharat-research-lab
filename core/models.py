@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
+from django_prose_editor.fields import ProseEditorField 
 
 class ResearchArea(models.Model):
 
@@ -274,7 +274,17 @@ class News(models.Model):
         max_length=250,
     )
 
-    content = models.TextField()
+    content = ProseEditorField(
+        extensions={
+            "Bold": True,
+            "Italic": True,
+            "Heading": {"levels": [2, 3]},
+            "BulletList": True,
+            "OrderedList": True,
+            "Link": True,
+        },
+        sanitize=True,
+    )
 
     image = models.ImageField(
         upload_to="news/",
