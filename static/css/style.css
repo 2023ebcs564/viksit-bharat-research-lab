@@ -930,3 +930,11 @@ html{
     }
 
 }
+
+.navbar-nav .nav-link{
+    margin-left:8px;
+}
+
+.navbar-brand{
+    font-size:1.3rem;
+}
