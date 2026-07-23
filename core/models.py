@@ -178,6 +178,11 @@ class TeamMember(models.Model):
         max_length=150,
     )
 
+    # Controls the display order on the website
+    display_order = models.PositiveIntegerField(
+        default=0,
+    )
+
     photo = models.ImageField(
         upload_to="team/",
         blank=True,
@@ -231,12 +236,11 @@ class TeamMember(models.Model):
 
     class Meta:
 
-        ordering = ["name"]
+        ordering = ["display_order"]
 
         verbose_name = "Team Member"
 
         verbose_name_plural = "Team Members"
-
 
 class News(models.Model):
 
