@@ -94,7 +94,18 @@ class Project(models.Model):
         max_length=300,
     )
 
-    description = models.TextField()
+    description = ProseEditorField(
+        extensions={
+            "Bold": True,
+            "Italic": True,
+            "Heading": {"levels": [2, 3]},
+            "BulletList": True,
+            "OrderedList": True,
+            "ListItem": True,
+            "Link": True,
+        },
+        sanitize=True,
+    )
 
     image = models.ImageField(
         upload_to="projects/",
@@ -218,7 +229,7 @@ class TeamMember(models.Model):
         blank=True,
     )
 
- bio = ProseEditorField(
+    bio = ProseEditorField(
         extensions={
             "Bold": True,
             "Italic": True,
@@ -242,6 +253,7 @@ class TeamMember(models.Model):
         sanitize=True,
         blank=True,
     )
+
     linkedin = models.URLField(
         blank=True,
     )
