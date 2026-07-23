@@ -1,0 +1,103 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eaf2ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="800" fill="url(#bgGrad)"/>
+
+  <!-- orbit ring -->
+  <circle cx="400" cy="400" r="260" fill="none" stroke="#0d6efd" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="4 10"/>
+
+  <!-- connecting lines from hub to nodes -->
+  <g stroke="#0d6efd" stroke-opacity="0.28" stroke-width="2.5" fill="none">
+    <path d="M400,400 Q400,270 400,140"/>
+    <path d="M400,400 Q515,335 625,270"/>
+    <path d="M400,400 Q515,465 625,530"/>
+    <path d="M400,400 Q400,530 400,660"/>
+    <path d="M400,400 Q285,465 175,530"/>
+    <path d="M400,400 Q285,335 175,270"/>
+  </g>
+
+  <!-- decorative particles -->
+  <g fill="#0d6efd" fill-opacity="0.35">
+    <circle cx="300" cy="195" r="4"/>
+    <circle cx="525" cy="175" r="3"/>
+    <circle cx="675" cy="400" r="4"/>
+    <circle cx="565" cy="615" r="3"/>
+    <circle cx="255" cy="620" r="4"/>
+    <circle cx="125" cy="400" r="3"/>
+  </g>
+
+  <!-- central hub: the lab -->
+  <circle cx="400" cy="400" r="85" fill="#0d6efd"/>
+  <g transform="translate(400,400)" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-14,-30 L-14,-8 L-32,28 Q-36,36 -26,36 L26,36 Q36,36 32,28 L14,-8 L14,-30"/>
+    <line x1="-18" y1="-30" x2="18" y2="-30"/>
+    <line x1="-22" y1="10" x2="22" y2="10"/>
+  </g>
+
+  <!-- AI / ML - top -->
+  <circle cx="400" cy="140" r="55" fill="#0f9d8a"/>
+  <g transform="translate(400,140)">
+    <g stroke="#ffffff" stroke-width="2.5">
+      <line x1="0" y1="-14" x2="-16" y2="12"/>
+      <line x1="0" y1="-14" x2="16" y2="12"/>
+      <line x1="-16" y1="12" x2="16" y2="12"/>
+    </g>
+    <circle cx="0" cy="-14" r="6" fill="#ffffff"/>
+    <circle cx="-16" cy="12" r="6" fill="#ffffff"/>
+    <circle cx="16" cy="12" r="6" fill="#ffffff"/>
+  </g>
+
+  <!-- Healthcare - upper right -->
+  <circle cx="625" cy="270" r="55" fill="#ef4444"/>
+  <g transform="translate(625,270)" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-24,2 L-12,2 L-6,-16 L4,20 L10,2 L24,2"/>
+  </g>
+
+  <!-- Data Science - lower right -->
+  <circle cx="625" cy="530" r="55" fill="#6366f1"/>
+  <g transform="translate(625,530)" fill="#ffffff">
+    <rect x="-22" y="0" width="10" height="20" rx="2"/>
+    <rect x="-6" y="-14" width="10" height="34" rx="2"/>
+    <rect x="10" y="-22" width="10" height="42" rx="2"/>
+  </g>
+
+  <!-- Sustainability - bottom -->
+  <circle cx="400" cy="660" r="55" fill="#16a34a"/>
+  <g transform="translate(400,660)">
+    <path d="M0,-22 C20,-22 26,0 20,16 C14,28 0,26 0,26 C0,26 -14,28 -20,16 C-26,0 -20,-22 0,-22 Z" fill="#ffffff"/>
+    <line x1="0" y1="-10" x2="0" y2="24" stroke="#16a34a" stroke-width="2.5"/>
+  </g>
+
+  <!-- Robotics - lower left -->
+  <circle cx="175" cy="530" r="55" fill="#475569"/>
+  <g transform="translate(175,530)" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round">
+    <circle cx="0" cy="0" r="12"/>
+    <line x1="0" y1="-24" x2="0" y2="-16"/>
+    <line x1="0" y1="16" x2="0" y2="24"/>
+    <line x1="-24" y1="0" x2="-16" y2="0"/>
+    <line x1="16" y1="0" x2="24" y2="0"/>
+    <line x1="-17" y1="-17" x2="-11" y2="-11"/>
+    <line x1="11" y1="11" x2="17" y2="17"/>
+    <line x1="-17" y1="17" x2="-11" y2="11"/>
+    <line x1="11" y1="-11" x2="17" y2="-17"/>
+  </g>
+
+  <!-- Computational Engineering - upper left -->
+  <circle cx="175" cy="270" r="55" fill="#d97706"/>
+  <g transform="translate(175,270)" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round">
+    <rect x="-16" y="-16" width="32" height="32" rx="4"/>
+    <line x1="-26" y1="-8" x2="-16" y2="-8"/>
+    <line x1="-26" y1="8" x2="-16" y2="8"/>
+    <line x1="16" y1="-8" x2="26" y2="-8"/>
+    <line x1="16" y1="8" x2="26" y2="8"/>
+    <line x1="-8" y1="-26" x2="-8" y2="-16"/>
+    <line x1="8" y1="-26" x2="8" y2="-16"/>
+    <line x1="-8" y1="16" x2="-8" y2="26"/>
+    <line x1="8" y1="16" x2="8" y2="26"/>
+  </g>
+</svg>
