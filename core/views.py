@@ -18,6 +18,16 @@ from .models import (
 )
 
 
+def debug_storage(request):
+
+    info = f"""
+    Storage Class: {default_storage.__class__}
+    Module: {default_storage.__class__.__module__}
+    """
+
+    return HttpResponse(f"<pre>{info}</pre>")
+
+
 def home(request):
 
     context = {
