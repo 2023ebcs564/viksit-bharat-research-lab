@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse
+from django.http import HttpResponse    
 from django.core.files.storage import default_storage
 
 from .forms import ContactForm
@@ -351,4 +351,19 @@ def contact(request):
         request,
         "contact.html",
         context,
+    )
+
+def robots_txt(request):
+
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /admin/",
+        "",
+        f"Sitemap: {request.scheme}://{request.get_host()}/sitemap.xml",
+    ]
+
+    return HttpResponse(
+        "\n".join(lines),
+        content_type="text/plain",
     )

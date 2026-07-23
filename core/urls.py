@@ -1,10 +1,39 @@
 from django.urls import path
+from django.contrib.sitemaps.views import sitemap
 
+from .sitemaps import (
+    StaticViewSitemap,
+    ResearchAreaSitemap,
+    ProjectSitemap,
+    PublicationSitemap,
+    TeamMemberSitemap,
+    NewsSitemap,
+)
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "research": ResearchAreaSitemap,
+    "projects": ProjectSitemap,
+    "publications": PublicationSitemap,
+    "team": TeamMemberSitemap,
+    "news": NewsSitemap,
+}
 from . import views
 
 urlpatterns = [
 
- 
+ path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="sitemap",
+    ),
+
+    path(
+        "robots.txt",
+        views.robots_txt,
+        name="robots_txt",
+    ),
 
     path(
         "",
