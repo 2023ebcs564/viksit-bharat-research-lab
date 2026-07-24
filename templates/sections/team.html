@@ -78,7 +78,7 @@
 
                             {% if member.email %}
 
-                            
+                            <a
                                 href="mailto:{{ member.email }}"
                                 class="text-decoration-none me-2">
 
@@ -90,7 +90,7 @@
 
                             {% if member.linkedin %}
 
-                            
+                            <a
                                 href="{{ member.linkedin }}"
                                 target="_blank"
                                 class="text-decoration-none me-2">
@@ -103,7 +103,7 @@
 
                             {% if member.google_scholar %}
 
-                            
+                            <a
                                 href="{{ member.google_scholar }}"
                                 target="_blank"
                                 class="text-decoration-none me-2">
@@ -118,7 +118,7 @@
 
                         <div class="card-footer bg-white border-0">
 
-                            
+                            <a
                                 href="{% url 'team_detail' member.slug %}"
                                 class="btn btn-outline-primary w-100">
 
@@ -150,7 +150,7 @@
 
         <div class="text-center mt-5">
 
-            
+            <a
                 href="{% url 'team' %}"
                 class="btn btn-primary btn-lg">
 
