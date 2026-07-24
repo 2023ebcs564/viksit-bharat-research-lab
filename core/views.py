@@ -21,6 +21,14 @@ from .models import (
 )
 
 
+TEAM_GROUP_ORDER = [
+    "Leadership",
+    "Research Team",
+    "Technical Team",
+    "Advisory Board",
+]
+
+
 def send_brevo_email(to_email, to_name, subject, text_content):
 
     try:
@@ -48,6 +56,7 @@ def send_brevo_email(to_email, to_name, subject, text_content):
         print(f"BREVO RESPONSE: {response.text}")
     except requests.RequestException as e:
         print(f"BREVO EXCEPTION: {e}")
+
 
 def debug_storage(request):
 
@@ -227,9 +236,27 @@ def publication_detail(request, pk):
 
 def team(request):
 
+    all_members = TeamMember.objects.all()
+
+    grouped_team = []
+
+    for group_name in TEAM_GROUP_ORDER:
+
+        group_members = all_members.filter(team_group=group_name)
+
+        if group_members.exists():
+            grouped_team.append(
+                {
+                    "name": group_name,
+                    "members": group_members,
+                }
+            )
+
     context = {
 
-        "team_members": TeamMember.objects.all(),
+        "grouped_team": grouped_team,
+
+        "team_members": all_members,
 
     }
 

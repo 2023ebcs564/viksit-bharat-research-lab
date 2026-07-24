@@ -145,17 +145,20 @@ class TeamMemberAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "thumbnail",
+        "team_group",
         "display_order",
         "designation",
         "featured",
     )
 
     list_editable = (
+        "team_group",
         "display_order",
         "featured",
     )
 
     list_filter = (
+        "team_group",
         "designation",
         "featured",
     )

@@ -202,6 +202,13 @@ class Publication(models.Model):
 
 class TeamMember(models.Model):
 
+    TEAM_GROUP_CHOICES = [
+        ("Leadership", "Leadership"),
+        ("Research Team", "Research Team"),
+        ("Technical Team", "Technical Team"),
+        ("Advisory Board", "Advisory Board"),
+    ]
+
     name = models.CharField(
         max_length=150,
     )
@@ -213,6 +220,12 @@ class TeamMember(models.Model):
 
     designation = models.CharField(
         max_length=150,
+    )
+
+    team_group = models.CharField(
+        max_length=50,
+        choices=TEAM_GROUP_CHOICES,
+        default="Technical Team",
     )
 
     display_order = models.PositiveIntegerField(
@@ -260,6 +273,11 @@ class TeamMember(models.Model):
 
     google_scholar = models.URLField(
         blank=True,
+    )
+
+    orcid = models.URLField(
+        blank=True,
+        help_text="e.g. https://orcid.org/0000-0000-0000-0000",
     )
 
     researchgate = models.URLField(

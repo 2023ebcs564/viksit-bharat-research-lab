@@ -60,22 +60,9 @@
 
                         {% endif %}
 
-                        {% if member.linkedin %}
-
-                        <a
-                            href="{{ member.linkedin }}"
-                            target="_blank"
-                            class="btn btn-outline-primary w-100 mb-2">
-
-                            LinkedIn
-
-                        </a>
-
-                        {% endif %}
-
                         {% if member.google_scholar %}
 
-                        <a
+                        
                             href="{{ member.google_scholar }}"
                             target="_blank"
                             class="btn btn-outline-success w-100 mb-2">
@@ -86,9 +73,35 @@
 
                         {% endif %}
 
+                        {% if member.orcid %}
+
+                        
+                            href="{{ member.orcid }}"
+                            target="_blank"
+                            class="btn btn-outline-danger w-100 mb-2">
+
+                            ORCID
+
+                        </a>
+
+                        {% endif %}
+
+                        {% if member.linkedin %}
+
+                        
+                            href="{{ member.linkedin }}"
+                            target="_blank"
+                            class="btn btn-outline-primary w-100 mb-2">
+
+                            LinkedIn
+
+                        </a>
+
+                        {% endif %}
+
                         {% if member.researchgate %}
 
-                        <a
+                        
                             href="{{ member.researchgate }}"
                             target="_blank"
                             class="btn btn-outline-info w-100 mb-2">
@@ -101,7 +114,7 @@
 
                         {% if member.personal_website %}
 
-                        <a
+                        
                             href="{{ member.personal_website }}"
                             target="_blank"
                             class="btn btn-dark w-100">
