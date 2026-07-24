@@ -67,6 +67,7 @@ def debug_storage(request):
 
     return HttpResponse(f"<pre>{info}</pre>")
 
+
 def home(request):
 
     featured_members = TeamMember.objects.filter(featured=True)
@@ -96,6 +97,28 @@ def home(request):
         "home_grouped_team": home_grouped_team,
 
         "latest_news": News.objects.filter(featured=True)[:3],
+
+        "total_projects": Project.objects.count(),
+
+        "total_publications": Publication.objects.count(),
+
+        "total_researchers": TeamMember.objects.count(),
+
+        "total_research_areas": ResearchArea.objects.count(),
+
+        "featured_gallery": Gallery.objects.filter(featured=True)[:8],
+
+        "partners": Partner.objects.filter(featured=True),
+
+        "achievements": Achievement.objects.filter(featured=True)[:6],
+
+    }
+
+    return render(
+        request,
+        "home.html",
+        context,
+    )
 
 
 def about(request):
