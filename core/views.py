@@ -67,8 +67,23 @@ def debug_storage(request):
 
     return HttpResponse(f"<pre>{info}</pre>")
 
-
 def home(request):
+
+    featured_members = TeamMember.objects.filter(featured=True)
+
+    home_grouped_team = []
+
+    for group_name in TEAM_GROUP_ORDER:
+
+        group_members = featured_members.filter(team_group=group_name)[:4]
+
+        if group_members.exists():
+            home_grouped_team.append(
+                {
+                    "name": group_name,
+                    "members": group_members,
+                }
+            )
 
     context = {
 
@@ -78,31 +93,9 @@ def home(request):
 
         "publications": Publication.objects.filter(featured=True)[:6],
 
-        "team_members": TeamMember.objects.filter(featured=True)[:4],
+        "home_grouped_team": home_grouped_team,
 
         "latest_news": News.objects.filter(featured=True)[:3],
-
-        "total_projects": Project.objects.count(),
-
-        "total_publications": Publication.objects.count(),
-
-        "total_researchers": TeamMember.objects.count(),
-
-        "total_research_areas": ResearchArea.objects.count(),
-
-        "featured_gallery": Gallery.objects.filter(featured=True)[:8],
-
-        "partners": Partner.objects.filter(featured=True),
-
-        "achievements": Achievement.objects.filter(featured=True)[:6],
-
-    }
-
-    return render(
-        request,
-        "home.html",
-        context,
-    )
 
 
 def about(request):
